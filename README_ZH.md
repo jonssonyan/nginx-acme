@@ -5,7 +5,7 @@
 ## 快速开始
 
 ```bash
-bash <(curl -fsSL https://github.com/jonssonyan/install-script/blob/main/nginx-acme/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/nginx-acme/refs/heads/main/install.sh)
 ```
 
 ## 文件夹

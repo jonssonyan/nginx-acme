@@ -215,18 +215,21 @@ main() {
     1)
       install_docker
       install_nginx_acme
+      echo_content yellow "Press Enter to continue..."
       read -r
       ;;
     2)
       install_docker
       install_nginx_acme
       install_cert
+      echo_content yellow "Press Enter to continue..."
       read -r
       ;;
     3)
       install_docker
       install_nginx_acme
       proxy_pass
+      echo_content yellow "Press Enter to continue..."
       read -r
       ;;
     0)

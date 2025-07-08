@@ -167,8 +167,6 @@ server {
     ssl_session_timeout 10m;
 
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-    add_header X-Frame-Options DENY always;
-    add_header X-Content-Type-Options nosniff always;
 
     location / {
         proxy_pass $proxy_pass;

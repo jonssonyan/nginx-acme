@@ -88,7 +88,7 @@ server {
     listen 80;
     server_name $domain;
 
-    location /.well-known/acme-challenge/ {
+    location ^~ /.well-known/acme-challenge/ {
         root /var/www/acme-challenge;
         default_type "text/plain";
         try_files \$uri =404;
@@ -140,7 +140,7 @@ server {
     listen 80;
     server_name $domain;
 
-    location /.well-known/acme-challenge/ {
+    location ^~ /.well-known/acme-challenge/ {
         root /var/www/acme-challenge;
         default_type "text/plain";
         try_files \$uri =404;
@@ -153,6 +153,7 @@ server {
 
 server {
     listen 443 ssl http2;
+    listen [::]:443 ssl http2;
     server_name $domain;
 
     ssl_certificate     /etc/nginx/ssl/$domain.crt;

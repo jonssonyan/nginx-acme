@@ -139,6 +139,7 @@ proxy_pass() {
 server {
     listen 80;
     server_name $domain;
+    access_log off;
 
     location ^~ /.well-known/acme-challenge/ {
         root /var/www/acme-challenge;

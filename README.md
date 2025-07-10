@@ -4,6 +4,14 @@
 
 Automatic certificate management with Nginx and acme.sh
 
+## Features
+
+- Automatic issuance and renewal of SSL certificates
+- Docker container based, easy and convenient deployment
+- Flexible configuration of Nginx and certificate paths
+- One-click installation script
+- Supports multi-domain certificate management
+
 ## Quick Start
 
 ```bash

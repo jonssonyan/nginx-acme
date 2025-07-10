@@ -2,6 +2,8 @@
 
 # Nginx with acme.sh
 
+Automatic certificate management with Nginx and acme.sh
+
 ## Quick Start
 
 ```bash
@@ -21,16 +23,20 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/nginx-acme/refs/h
     - nginx ssl: /etc/nginx/ssl
     - nginx log: /var/log/nginx
 
-## Reference
+## Contact
 
-1. https://github.com/acmesh-official/acme.sh
+X: https://x.com/jonssonyan
 
-## Other
+YouTube: https://www.youtube.com/@jonssonyan
 
-Telegram Channel: https://t.me/jonssonyan_channel
-
-You can subscribe to my channel on YouTube: https://www.youtube.com/@jonssonyan
+## Sponsor
 
 If this project is helpful to you, you can buy me a cup of coffee.
 
+Wechat sponsor code:
+
 <img src="https://github.com/jonssonyan/install-script/assets/46235235/cce90c48-27d3-492c-af3e-468b656bdd06" width="150" alt="Wechat sponsor code" title="Wechat sponsor code"/>
+
+## Thanks
+
+- [acme.sh](https://github.com/acmesh-official/acme.sh)

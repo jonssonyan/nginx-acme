@@ -2,6 +2,8 @@
 
 # Nginx with acme.sh
 
+使用 Nginx 和 acme.sh 自动管理证书
+
 ## 快速开始
 
 ```bash
@@ -21,16 +23,20 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/nginx-acme/refs/h
     - nginx ssl: /etc/nginx/ssl
     - nginx log: /var/log/nginx
 
-## 参考
+## 联系
 
-1. https://github.com/acmesh-official/acme.sh
+X: https://x.com/jonssonyan
 
-## 其他
+YouTube: https://www.youtube.com/@jonssonyan
 
-Telegram Channel: https://t.me/jonssonyan_channel
+## 赞助
 
-你可以在 YouTube 上订阅我的频道: https://www.youtube.com/@jonssonyan
+如果这个项目对你有帮助，你可以请我喝杯咖啡
 
-如果这个项目对你有帮助，你可以请我喝杯咖啡:
+微信赞赏码:
 
 <img src="https://github.com/jonssonyan/install-script/assets/46235235/cce90c48-27d3-492c-af3e-468b656bdd06" width="150" alt="微信赞赏码" title="微信赞赏码"/>
+
+## 致谢
+
+- [acme.sh](https://github.com/acmesh-official/acme.sh)

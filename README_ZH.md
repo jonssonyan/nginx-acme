@@ -35,7 +35,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/nginx-acme/refs/h
 
 X: https://x.com/jonssonyan
 
-YouTube: https://www.youtube.com/@jonssonyan
+你可以在 YouTube 上订阅我的频道: https://www.youtube.com/@jonssonyan
 
 如果这个项目对你有帮助，可以请我喝杯咖啡
 

@@ -37,14 +37,10 @@ X: https://x.com/jonssonyan
 
 YouTube: https://www.youtube.com/@jonssonyan
 
-## 赞助
-
-如果这个项目对你有帮助，你可以请我喝杯咖啡
-
-微信赞赏码:
+如果这个项目对你有帮助，可以请我喝杯咖啡
 
 <img src="https://github.com/jonssonyan/install-script/assets/46235235/cce90c48-27d3-492c-af3e-468b656bdd06" width="150" alt="微信赞赏码" title="微信赞赏码"/>
 
 ## 致谢
 
-- [acme.sh](https://github.com/acmesh-official/acme.sh)
+- 使用 [acme.sh](https://github.com/acmesh-official/acme.sh) 管理证书

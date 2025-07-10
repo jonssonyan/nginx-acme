@@ -37,14 +37,10 @@ X: https://x.com/jonssonyan
 
 YouTube: https://www.youtube.com/@jonssonyan
 
-## Sponsor
-
 If this project is helpful to you, you can buy me a cup of coffee.
-
-Wechat sponsor code:
 
 <img src="https://github.com/jonssonyan/install-script/assets/46235235/cce90c48-27d3-492c-af3e-468b656bdd06" width="150" alt="Wechat sponsor code" title="Wechat sponsor code"/>
 
-## Thanks
+## Credits
 
-- [acme.sh](https://github.com/acmesh-official/acme.sh)
+- Use [acme.sh](https://github.com/acmesh-official/acme.sh) to manage certificates

@@ -8,7 +8,7 @@ set -e
 init_var() {
   ECHO_TYPE="echo -e"
 
-  NGINX_ACME_DATA="/dockerdata/nginxacme"
+  NGINX_ACME_DATA="/dockerdata/nginx-acme"
   NGINX_ACME_SSL="${NGINX_ACME_DATA}/ssl"
   NGINX_ACME_CONFD="${NGINX_ACME_DATA}/conf.d"
   NGINX_ACME_LOG="${NGINX_ACME_DATA}/log"

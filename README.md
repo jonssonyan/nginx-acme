@@ -21,9 +21,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/nginx-acme/refs/h
 ## File directory
 
 - Host
-    - nginx config: /dockerdata/nginxacme/conf.d
-    - nginx ssl: /dockerdata/nginxacme/ssl
-    - nginx log: /dockerdata/nginxacme/log
+    - nginx config: /dockerdata/nginx-acme/conf.d
+    - nginx ssl: /dockerdata/nginx-acme/ssl
+    - nginx log: /dockerdata/nginx-acme/log
 - Container
     - acme: /root/.acme.sh
     - webroot: /var/www/acme-challenge

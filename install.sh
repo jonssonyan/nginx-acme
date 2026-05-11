@@ -162,6 +162,7 @@ server {
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_prefer_server_ciphers on;
     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384;
+    ssl_ecdh_curve X25519:secp384r1;
     ssl_session_cache shared:SSL:10m;
     ssl_session_timeout 10m;
 

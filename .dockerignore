@@ -2,4 +2,3 @@ Dockerfile
 .dockerignore
 README*
 .git
-.env*

@@ -1,5 +1,5 @@
 Dockerfile
 .dockerignore
-README.md
+README*
 .git
 .env*

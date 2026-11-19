@@ -11,4 +11,6 @@ RUN curl https://get.acme.sh | sh \
 
 RUN mkdir -p /etc/nginx/ssl /var/www/acme-challenge/.well-known/acme-challenge
 
+VOLUME ["/root/.acme.sh"]
+
 COPY nginx.conf /etc/nginx/nginx.conf

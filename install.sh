@@ -53,11 +53,12 @@ install_nginx_acme() {
 
   echo_content skyBlue "---> Installing Nginx ACME"
 
-  docker run -d --name ${nginx_acme_ip} --restart always \
+  docker run -d --name "${nginx_acme_ip}" --restart always \
     --network=host \
-    -v ${NGINX_ACME_SSL}:/etc/nginx/ssl/ \
-    -v ${NGINX_ACME_CONFD}:/etc/nginx/conf.d/ \
-    -v ${NGINX_ACME_LOG}:/var/log/nginx/ \
+    -v "${NGINX_ACME_SSL}:/etc/nginx/ssl/" \
+    -v "${NGINX_ACME_CONFD}:/etc/nginx/conf.d/" \
+    -v "${NGINX_ACME_LOG}:/var/log/nginx/" \
+    -v nginx-acme-acme:/root/.acme.sh/ \
     ghcr.io/jonssonyan/nginx-acme
 
   if [[ -n $(docker ps -q -f "name=^${nginx_acme_ip}$" -f "status=running") ]]; then

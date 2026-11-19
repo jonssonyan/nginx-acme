@@ -1,4 +1,4 @@
-FROM nginx:1.18-alpine
+FROM nginx:1.30.7-alpine
 
 LABEL maintainer="jonsosnyan <https://jonssonyan.com>"
 

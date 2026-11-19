@@ -15,6 +15,7 @@ init_var() {
 
   nginx_acme_ip="jy-nginx-acme"
   acme_ca="letsencrypt"
+  acme_email=""
   domain=""
   proxy_pass=""
 }
@@ -51,6 +52,11 @@ install_nginx_acme() {
     return
   fi
 
+  if [[ -n $(docker ps -aq -f "name=^${nginx_acme_ip}$") ]]; then
+    echo_content red "---> Nginx ACME container exists but is not running"
+    exit 1
+  fi
+
   echo_content skyBlue "---> Installing Nginx ACME"
 
   docker run -d --name "${nginx_acme_ip}" --restart always \
@@ -81,10 +87,33 @@ install_cert() {
     fi
   done
 
-  read -r -p "Please input CA(default:letsencrypt): " acme_ca
-  [[ -z "${acme_ca}" ]] && acme_ca="letsencrypt"
+  echo_content yellow "1. letsencrypt"
+  echo_content yellow "2. zerossl"
+  read -r -p "Please choose CA(default:1): " ca_option
+  case ${ca_option} in
+  2) acme_ca="zerossl" ;;
+  *) acme_ca="letsencrypt" ;;
+  esac
 
-  cat >"${NGINX_ACME_CONFD}/${domain}.conf" <<EOF
+  if [[ "${acme_ca}" == "zerossl" ]]; then
+    while read -r -p "Please input your Email(Required by ZeroSSL): " acme_email; do
+      if [[ -z "${acme_email}" ]]; then
+        echo_content red "Email required"
+      else
+        break
+      fi
+    done
+
+    if ! docker exec "${nginx_acme_ip}" acme.sh --register-account -m "${acme_email}" --server zerossl; then
+      echo_content red "---> Failed to register ZeroSSL account"
+      exit 1
+    fi
+  fi
+
+  if [[ -f "${NGINX_ACME_CONFD}/${domain}.conf" ]]; then
+    echo_content yellow "---> ${NGINX_ACME_CONFD}/${domain}.conf already exists, keeping it"
+  else
+    cat >"${NGINX_ACME_CONFD}/${domain}.conf" <<EOF
 server {
     listen 80;
     server_name $domain;
@@ -97,13 +126,21 @@ server {
 }
 EOF
 
-  docker exec ${nginx_acme_ip} nginx -s reload
+    docker exec ${nginx_acme_ip} nginx -s reload
+  fi
 
   echo_content skyBlue "---> Requesting SSL certificate for ${domain}"
 
-  docker exec ${nginx_acme_ip} acme.sh --issue -d ${domain} -w /var/www/acme-challenge --server ${acme_ca}
-
-  echo_content skyBlue "---> Certificate issued successfully"
+  local rc=0
+  docker exec "${nginx_acme_ip}" acme.sh --issue -d "${domain}" -w /var/www/acme-challenge --server "${acme_ca}" || rc=$?
+  case ${rc} in
+  0) echo_content skyBlue "---> Certificate issued successfully" ;;
+  2) echo_content yellow "---> Certificate already exists and is not due for renewal, skipping issue" ;;
+  *)
+    echo_content red "---> Certificate issue failed"
+    exit 1
+    ;;
+  esac
 
   docker exec ${nginx_acme_ip} acme.sh --install-cert -d "${domain}" \
     --key-file /etc/nginx/ssl/${domain}.key \

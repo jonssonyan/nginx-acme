@@ -131,16 +131,9 @@ EOF
 
   echo_content skyBlue "---> Requesting SSL certificate for ${domain}"
 
-  local rc=0
-  docker exec "${nginx_acme_ip}" acme.sh --issue -d "${domain}" -w /var/www/acme-challenge --server "${acme_ca}" || rc=$?
-  case ${rc} in
-  0) echo_content skyBlue "---> Certificate issued successfully" ;;
-  2) echo_content yellow "---> Certificate already exists and is not due for renewal, skipping issue" ;;
-  *)
-    echo_content red "---> Certificate issue failed"
-    exit 1
-    ;;
-  esac
+  docker exec "${nginx_acme_ip}" acme.sh --issue -d "${domain}" -w /var/www/acme-challenge --server "${acme_ca}"
+
+  echo_content skyBlue "---> Certificate issued successfully"
 
   docker exec ${nginx_acme_ip} acme.sh --install-cert -d "${domain}" \
     --key-file /etc/nginx/ssl/${domain}.key \

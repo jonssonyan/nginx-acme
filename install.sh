@@ -36,10 +36,10 @@ echo_content() {
 }
 
 create_dirs() {
-  mkdir -p ${NGINX_ACME_DATA}
-  mkdir -p ${NGINX_ACME_SSL}
-  mkdir -p ${NGINX_ACME_CONFD}
-  mkdir -p ${NGINX_ACME_LOG}
+  mkdir -p "${NGINX_ACME_DATA}"
+  mkdir -p "${NGINX_ACME_SSL}"
+  mkdir -p "${NGINX_ACME_CONFD}"
+  mkdir -p "${NGINX_ACME_LOG}"
 }
 
 install_docker() {
@@ -126,7 +126,7 @@ server {
 }
 EOF
 
-    docker exec ${nginx_acme_ip} nginx -s reload
+    docker exec "${nginx_acme_ip}" nginx -s reload
   fi
 
   echo_content skyBlue "---> Requesting SSL certificate for ${domain}"
@@ -135,9 +135,9 @@ EOF
 
   echo_content skyBlue "---> Certificate issued successfully"
 
-  docker exec ${nginx_acme_ip} acme.sh --install-cert -d "${domain}" \
-    --key-file /etc/nginx/ssl/${domain}.key \
-    --fullchain-file /etc/nginx/ssl/${domain}.crt \
+  docker exec "${nginx_acme_ip}" acme.sh --install-cert -d "${domain}" \
+    --key-file "/etc/nginx/ssl/${domain}.key" \
+    --fullchain-file "/etc/nginx/ssl/${domain}.crt" \
     --reloadcmd "nginx -s reload"
 
   echo_content skyBlue "---> Certificate installed successfully"
@@ -212,7 +212,7 @@ server {
 }
 EOF
 
-  docker exec ${nginx_acme_ip} nginx -s reload
+  docker exec "${nginx_acme_ip}" nginx -s reload
 
   echo_content skyBlue "---> Domain: ${domain} proxy pass successfully"
   echo_content skyBlue "---> Domain: ${domain} Nginx ACME config path: ${NGINX_ACME_CONFD}/${domain}.conf"

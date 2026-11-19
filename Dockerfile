@@ -1,10 +1,9 @@
 FROM nginx:1.30.7-alpine
 
-LABEL maintainer="jonsosnyan <https://jonssonyan.com>"
+LABEL maintainer="jonssonyan <https://jonssonyan.com>"
 
 RUN apk update \
-    && apk add --no-cache bash curl socat openssl \
-    && rm -rf /var/cache/apk/*
+    && apk add --no-cache bash curl socat openssl
 
 RUN curl https://get.acme.sh | sh \
     && ln -s /root/.acme.sh/acme.sh /usr/local/bin/acme.sh

@@ -18,6 +18,7 @@ init_var() {
   acme_email=""
   domain=""
   proxy_pass=""
+  proxy_path="/"
 }
 
 echo_content() {
@@ -153,6 +154,9 @@ proxy_pass() {
     fi
   done
 
+  read -r -p "Please input your Proxy path(default:/): " proxy_path
+  [[ -z "${proxy_path}" ]] && proxy_path="/"
+
   while read -r -p "Please input your Proxy pass(Required): " proxy_pass; do
     if [[ -z "${proxy_pass}" ]]; then
       echo_content red "Proxy pass required"
@@ -201,7 +205,7 @@ server {
     add_header X-Frame-Options DENY always;
     add_header X-Content-Type-Options nosniff always;
 
-    location / {
+    location ${proxy_path} {
         proxy_pass $proxy_pass;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
